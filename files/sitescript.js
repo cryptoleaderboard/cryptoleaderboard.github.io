@@ -7,7 +7,7 @@
 "use strict";
 
 const testContractAddress = "n1iBtCibUNxNqsqsgRLk1X2NU3CGYti6ex1";
-const mainContractAddress = "n1iBtCibUNxNqsqsgRLk1X2NU3CGYti6ex1";
+const mainContractAddress = "n1kGNSmXQBLFLffXtbrxuKRCaDZXWzA97Ap";
 var contractAddress = mainContractAddress;
 
 var nebulas = require("nebulas"),
@@ -118,6 +118,9 @@ function onClickCall() {
                 // showAlert(JSON.stringify(resp));
                 $("#call_result").text(JSON.stringify(resp));
                 $("#wallet-modal").modal("hide");
+                $("#wallet-modal").removeClass("listen-to-bs-shown");
+                $("#wallet-modal").removeClass("marked-for-close");
+                
                 showAlert("等候刷新！Refresh display in a minute after the chain has been verified!", "success");
                 refreshDisplay();
                 // $(".result").removeClass("active1");
