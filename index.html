@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <link rel="icon shortcut" href=images/logo.png type=image/png>
+    <link rel=apple-touch-icon href=images/logo.png>
+    <link rel=stylesheet href=css/base.css>
+    <link rel=stylesheet href=css/ui-block.css>
+    <link rel=stylesheet href=lib/bootstrap-4.0.0-dist/css/bootstrap.min.css>
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Cuprum:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="rsp/stylesheet.css">
+    
+    <meta name=viewport content="width=device-width">
+    <title>Leaderboard</title>
+    <meta name="description" content="Leaderboard">
+
+</head>
+
+<body>
+
+    <!-- <div class=logo-main></div> -->
+    <!-- <div class=header></div> -->
+    
+    <div class="item-containers">
+    </div>
+
+    <!-- WALLET BUTTON -->
+    <div class="wallet-wrapper">
+        <a class="btn btn-light btn-lg" data-toggle="modal" data-target="#wallet-modal">
+            点赞 Vote 👍
+        </a>
+    </div>
+
+    <!-- WALLET MODAL -->
+    <div id="wallet-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">为我点赞！Voting Time!</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div id="wallet" class="main-page container">
+                        <div id="content" class="container-bg">
+                            <div class="run_contract">
+                
+                                <!-- CALL FUNCTION and ARGS row -->
+                                <div class="form-group row hidden">
+                                    <div class=col>
+                                        <label data-i18n=contract/contract_funtion></label>
+                                        <span id=function_prompt class=prompt><img src=img/prompt.png></span>
+                                        <div id=function_prompt_contenner class="active1 function_prompt_contenner"> <b data-i18n=contract/contract_fn_prompt></b></div>
+                                        <input class=form-control type=text id=call_function>
+                                    </div>
+                                    <div class=col>
+                                        <label data-i18n=contract/contract_fun></label>
+                                        <span id=call_prompt class=prompt><img src=img/prompt.png></span>
+                                        <div id=call_prompt_contenner class="active1 call_prompt_contenner"> <b  data-i18n=contract/contract_fun_prompt></b></div>
+                                        <input class=form-control type=text id=call_args>
+                                    </div>
+                                </div>
+
+                                <div class="pre-wallet">
+                                    <h3>💰 解说钱包开始投票！<br>Unlock your wallet to start voting!</h3>
+                                    <div class="select-wallet-file"></div>
+                                </div>
+                                
+                                <div class="post-wallet" style="display: none;">
+                                        
+                                    <div class="form-group row">
+                                        <div class=col>
+                                            <!-- ADDRESS -->
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">地址 Address</span>
+                                                    </div>
+                                                    <div class="form-control">
+                                                        <div class="icon-address" data-id="run_from_addr" data-disabled></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=col>
+                                            <!-- BALANCE -->
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">余额 Balance</span>
+                                                    </div>
+                                                    <div class="form-control">
+                                                        <input class="form-control" disabled id="run_balance">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col hidden">
+                                            <label data-i18n=send-nas/to-address></label>
+                                            <div class=icon-address data-id=run_to_addr></div>
+                                        </div>
+                                        <div class="col hidden">
+                                            <label data-i18n=send-nas/amount></label>
+                                            <!-- <input class=form-control id=run_value value=0 data-validate-order-matters="required number"> -->
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-group row">
+                                        <div class=col>
+                                            <!-- GAS LIMIT -->
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Gas Limit/限制</span>
+                                                    </div>
+                                                    <div class="form-control">
+                                                        <input class="form-control" type=text id="run_gas_limit" value=200000>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=col>
+                                            <!-- GAS PRICE -->
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" title="1 NAS = 1EWei = 10^18 Wei">Gas Price/价格</span>
+                                                    </div>
+                                                    <div class="form-control">
+                                                        <input class=form-control type=text id="run_gas_price">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group input-group-lg">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">点赞数 Upvote Amount</span>
+                                            </div>
+                                            <input class=form-control id=run_value value=0 data-validate-order-matters="required number">
+                                        </div>
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <div class="input-group input-group-lg">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">为我点赞 Vote Item</span>
+                                            </div>
+                                            <input class=form-control id="bid-display" value="" data-validate-order-matters="required number">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row hidden">
+                                        <div class="col">
+                                            <button id="call_test" data-i18n=contract/call_test class="btn btn-block btn-primary"></button>
+                                        </div>
+                                        <div class=col>
+                                            <button class="btn btn-block btn-primary btn-lg" data-i18n=contract/call_submit disabled id="call"></button>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="active1 next row hidden">
+                                        <div class="col-6">
+                                            <span class=execution data-i18n=contract/test_result></span>
+                                            <textarea class="execution_banner form-control" id=call_test_result></textarea>
+                                        </div>
+                                        <div class=col-6>
+                                            <span class=execution data-i18n=contract/result></span>
+                                            <br>
+                                            <span data-i18n=contract/txhash></span>
+                                            <i data-i18n=contract/clickToCheck></i>&darr;
+                                            <a class="form-control mt14" id=receipt_call></a>
+                                        </div>
+                                    </div>   
+
+                                    <div>
+                                        <a id="submitCall" class="btn btn-success btn-xlg btn-block" role="button">点赞! Upvote! 👍</a>
+                                    </div>
+
+                                </div>      
+                                
+                                
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body alert-content">
+                &nbsp;
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src=lib/jquery-3.3.1.min.js></script>
+    <script src=lib/underscore.js></script>
+    <script src=lib/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js data-depends=jquery.slim></script>
+    <script src=lib/bootbox.min.js data-depends="bootstrap jquery.slim"></script>
+    <script src=lib/blockies.min.js></script>
+    <script src=lib/js-beautify-1.7.5/beautify.js></script>
+    <script src=lib/prismjs-1.13.0/prism.js></script>
+    <script src=lib/nebulas.js></script>
+    <script src=js/1-localSave.js></script>
+    <script src=js/home.v1.js></script>
+    <script src=js/i18n.js data-depends=jquery.slim></script>
+    <script src=js/ui-block.js data-depends="bootbox blockies jquery.slim i18n.js nebulas.js"></script>
+    <script src="rsp/sitescript.js"></script>
+</body>
+</html>
