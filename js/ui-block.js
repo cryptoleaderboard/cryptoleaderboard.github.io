@@ -141,6 +141,8 @@ var uiBlock = function () {
             //
             // apiPrefix
 
+            console.log("logoMain called");
+
             apiList = [
                 { chainId: 1, name: "Mainnet", url: "https://mainnet.nebulas.io" },
                 { chainId: 1001, name: "Testnet", url: "https://testnet.nebulas.io" },
