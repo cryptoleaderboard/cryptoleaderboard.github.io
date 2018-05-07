@@ -394,7 +394,6 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .select-wallet-file input[type=password] {
@@ -415,4 +414,21 @@ body {
 
 .select-wallet-file .comment {
     font-size: .8rem;
+}
+
+
+/***************************************/
+/* MEDIA QUERY */
+/***************************************/
+
+
+@media only screen and (max-width: 800px) {
+    .item-amount {
+        font-size: 1.2rem !important;
+        line-height: 1.2rem !important;
+    }
+    .btn-xlg {
+        font-size: 1.5rem;
+        padding: 0.2rem 1.2rem;
+    }
 }
