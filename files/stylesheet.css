@@ -160,6 +160,7 @@ body {
     /* margin-top: 10%; */
     background-color: #8200F5;
     color: #fff;
+    margin-bottom: 15rem;
 }
 .item-containers .item {
     position: relative;
@@ -174,12 +175,12 @@ body {
         /* width: 60%; */
         margin: 0;
         padding: 0;
-        margin-top: -2.0rem;
+        margin-top: -1rem;
         line-height: 9rem;
         font-size: 9rem;
         position: absolute;
         left: 10px;
-        top: 10px;
+        top: 0px;
         font-weight: bold;
         color: rgba(255,255,255,0.15);
     }
@@ -349,6 +350,12 @@ body {
         font-size: 1.3rem;
     }
 
+/* 3 onwards */
+.item-containers .item:nth-child(n+3) .item-rank {
+    font-size: 5rem;
+    line-height: 6rem;
+}    
+
 .item-containers .item:hover {
     background-color: rgba(0,0,0,0.6);
     cursor: pointer;
@@ -474,6 +481,10 @@ body {
         font-size: 1.0rem;
         line-height: 1.2rem;
         font-weight: normal;
+    }
+    
+    .item-containers .item .item-name {
+        margin-left: 1.6rem;
     }
     /* 1st */
     .item-containers .item:nth-child(1) {
